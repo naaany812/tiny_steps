@@ -5,19 +5,19 @@ from random import sample
 app = Flask(__name__)
 
 goals_mock = dict()
-with open(r"data\goals.json", "r", encoding="utf8") as f:
+with open(r"data/goals.json", "r", encoding="utf8") as f:
     content = f.read()
     goals_mock = loads(content)
 
 
 teachers = []
-with open(r"data\teachers.json", "r", encoding="utf8") as f:
+with open(r"data/teachers.json", "r", encoding="utf8") as f:
     contents = f.read()
     teachers = loads(contents).get("teachers")
 
 
 days = dict()
-with open(r"C:\Users\Kukhta_Anna\python\TinySteps\data\days.json", "r", encoding="utf8") as f:
+with open(r"data/days.json", "r", encoding="utf8") as f:
     content = f.read()
     days = loads(content)
 
@@ -64,7 +64,7 @@ def send_request():
 def request_done():
     request_form = request.form
     goal = goals_mock.get(request_form.get("goal"))
-    with open(r"data\request.json", "a+", encoding="utf8") as f:
+    with open(r"data/request.json", "a+", encoding="utf8") as f:
         request_dumped = dumps(request_form)
         f.write(",\n")
         f.write(request_dumped)    
@@ -86,7 +86,7 @@ def booking(teacher_id, day, time):
 @app.route("/booking_done/", methods=["POST"])
 def booking_done():
     booking_info = request.form
-    with open(r"data\booking.json", "a+", encoding="utf8") as f:
+    with open(r"data/booking.json", "a+", encoding="utf8") as f:
         booking_dumped = dumps(booking_info)
         f.write(",\n")
         f.write(booking_dumped)
