@@ -33,7 +33,7 @@
             {% for day in timesheet %}
             {% set is_available = timesheet[day][time] %}
             {% if day not in ["sat", "sun"] %}
-            <td><a href="/booking/{{ teacher.id }}/{{ day }}/{{ time }}/" class="btn btn-sm {% if is_available %}btn-success{% else %}btn-secondary{% endif %}">{{ time }}</a></td>
+            <td><a href="{{ url_for('booking', teacher_id=teacher.id, day=day, time=time) }}" class="btn btn-sm {% if is_available %}btn-success{% else %}btn-secondary{% endif %}">{{ time }}</a></td>
             {% else %}
             <td>-</td>
             {% endif %}
