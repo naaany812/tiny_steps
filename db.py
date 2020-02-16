@@ -39,4 +39,5 @@ class Study_Request(db.Model):
     phone = db.Column(PhoneNumberType(), nullable=False)
 
 
-db.create_all()
+if __name__ == '__main__':
+    db.create_all()

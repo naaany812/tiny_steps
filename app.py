@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json
 from random import sample
+from db import db, Teacher
 
 app = Flask(__name__)
 
@@ -48,7 +49,7 @@ def goals(goal):
 
 @app.route("/profiles/<int:teacher_id>/")
 def profile(teacher_id):
-    teacher = teachers[teacher_id]
+    teacher = db.session.query(Teacher).get_or_404(teacher_id)
     timesheet = teacher["free"]
     teacher_goals = ", ".join(goals_mock.get(g) for g in teacher.get("goals"))
     return render_template(
