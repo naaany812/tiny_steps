@@ -13,9 +13,15 @@
           <hr />
           <div class="card-body mx-5">
             <p><b>Тема:</b> Пробный урок</p>
-            <p><b>Дата:</b> {{ info.day }}, {{ info.time }}</p>
-            <p><b>Имя:</b> {{ info.name }}</p>
-            <p><b>Телефон:</b> {{info.phone }}</p>
+            <p><b>Дата:</b> {{ info.day.data }}, {{ info.time.data }}</p>
+            {% for err in info.name.errors %}
+            <p class="alert-warning">{{ err }}</p>                         
+            {% endfor %}
+            <p><b>Имя:</b> {{ info.name.data }}</p>
+            {% for err in info.phone.errors %}
+            <p class="alert-warning">{{ err }}</p>                         
+            {% endfor %}  
+            <p><b>Телефон:</b> {{info.phone.data }}</p>
           </div>
         </div>
       </div>

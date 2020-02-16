@@ -1,10 +1,7 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import PhoneNumberType
+from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 
 class Teacher(db.Model):
@@ -13,7 +10,7 @@ class Teacher(db.Model):
     name = db.Column(db.String, nullable=False)
     about = db.Column(db.String)
     rating = db.Column(db.Float, nullable=False)
-    picture = db.Column(db.String, nullable=False)    
+    picture = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     goals = db.Column(db.JSON)
     free = db.Column(db.JSON, nullable=False)
