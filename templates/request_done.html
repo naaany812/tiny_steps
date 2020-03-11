@@ -13,9 +13,15 @@
           <hr />
           <div class="card-body mx-5">
             <p><b>Цель занятий:</b> {{ goal }}</p>
-            <p><b>Времени есть:</b> {{ request.time }} часа в неделю</p>
-            <p><b>Имя:</b> {{ request.name }}</p>
-            <p><b>Телефон:</b> {{ request.phone }}</p>
+            <p><b>Времени есть:</b> {{ form.time.data }} часа в неделю</p>
+            {% for err in form.name.errors %}
+            <p class="alert-warning">{{ err }}</p>                         
+            {% endfor %}
+            <p><b>Имя:</b> {{ form.name.data }}</p>
+            {% for err in form.phone.errors %}
+            <p class="alert-warning">{{ err }}</p>                         
+            {% endfor %}  
+            <p><b>Телефон:</b> {{ form.phone.data }}</p>
           </div>
         </div>
       </div>
